@@ -1,0 +1,130 @@
+project odin day 1
+
+oragnize code
+
+overview
+excited to learn everything basic to react and ... testing too i guess
+
+The patterns we’ll be covering in this series are:
+
+Plain Old JavaScript Objects and Object Constructors
+Factory Functions and the Module Pattern
+Classes
+ES6 Modules
+
+supplemental : you dont know js git  https://github.com/getify/You-Dont-Know-JS/tree/1st-ed#titles
+
+JavaScript
+OBJECTS AND OBJECT CONSTRUCTORS
+
+first real lesson
+
+Learning Outcomes
+By the end of this lesson, you should be able to do the following:
+
+Write an object constructor and instantiate the object.
+Describe what a prototype is and how it can be used.
+Explain prototypal inheritance.
+Understand the basic do’s and don’t’s of prototypical inheritance.
+Explain what Object.create does.
+
+favor object with multi properites over making multi varible 
+	ex: playerOneName ="timmy"  VS
+	PlayerOneMark = "x"
+	
+	vs
+	const palyerOne={ name: "tim", marker: "x"}
+	obvious reasons
+
+
+Object constructors
+
+When you have a specific type of object that you need to duplicate like our player or inventory items a better way to create them is using an object constructor, which is a function that looks like this:
+function Player(name, marker) {
+  this.name = name
+  this.marker = marker
+}
+
+const player = new Player('steve', 'X')
+console.log(player.name) // 'steve'
+
+creating my first vscode js was pretty sweet, I enjoy the syntax highlithing
+
+reading additional resources prototype (good idea how to do inhertance wiht javascript)
+
+ core idea
+ function Plant () {
+this.country = "Mexico";
+this.isOrganic = true;
+}
+
+// Add the showNameAndColor method to the Plant prototype property
+Plant.prototype.showNameAndColor =  function () {
+console.log("I am a " + this.name + " and my color is " + this.color);
+}
+
+// Add the amIOrganic method to the Plant prototype property
+Plant.prototype.amIOrganic = function () {
+if (this.isOrganic)
+console.log("I am organic, Baby!");
+}
+
+function Fruit (fruitName, fruitColor) {
+this.name = fruitName;
+this.color = fruitColor;
+}
+
+// Set the Fruit's prototype to Plant's constructor, thus inheriting all of Plant.prototype methods and properties.
+Fruit.prototype = new Plant ();
+
+// Creates a new object, aBanana, with the Fruit constructor
+var aBanana = new Fruit ("Banana", "Yellow");
+
+// Here, aBanana uses the name property from the aBanana object prototype, which is Fruit.prototype:
+console.log(aBanana.name); // Banana
+
+// Uses the showNameAndColor method from the Fruit object prototype, which is Plant.prototype. The aBanana object inherits all the properties and methods from both the Plant and Fruit functions.
+console.log(aBanana.showNameAndColor()); // I am a Banana and my color is yellow.
+
+2 key concept
+prototype methods are recurivesly search on object to father.. grandfather object
+
+
+
+If you’re using constructors to make your objects it is best to define functions on the prototype of that object. Doing so means that a single instance of each function will be shared between all of the Student objects. If we declare the function directly in the constructor like we did when they were first introduced that function would be duplicated every time a new Student is created. In this example, that wouldn’t really matter much, but in a project that is creating thousands of objects, it really can make a difference.
+
+
+Key concept in creating prototype inhertance
+function Student() {
+}
+
+Student.prototype.sayName = function() {
+  console.log(this.name)
+}
+
+function EighthGrader(name) {
+  this.name = name
+  this.grade = 8
+}
+
+EighthGrader.prototype = Object.create(Student.prototype)
+
+const carl = new EighthGrader("carl")
+carl.sayName() // console.logs "carl"
+carl.grade // 8
+
+
+if we use Object.create we could sfely edit  EighthGrader.prototype.sayname without changing the function in other instances that inherant the the parent prototypes
+
+Project Library
+
+abit of challenge beacuse off the dom manipulation. I was used to jquery part the reason i came on this journey was to learn more native js functions
+besides that it was fine. A lil confused why that stuff wasnt covered. I didnt seem like the assignment match the learning meterail
+*skipped updateing flag. Seem simple enough
+
+
+
+
+
+
+
