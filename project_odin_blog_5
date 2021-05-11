@@ -1,0 +1,74 @@
+ES6 Modules
+
+module pattern is not modules
+
+Learning Outcomes
+
+After completing this lesson, you will be able to:
+
+    Explain what npm is and where it was commonly used before being adopted on the frontend.
+    Describe what npm init does and what package.json is.
+    Know how to install packages using npm.
+    Describe what a JavaScript module bundler like webpack is.
+    Explain what the concepts “entry” and “output” mean as relates to webpack.
+    Briefly explain what a development dependency is.
+    Explain what “transpiling code” means and how it relates to frontend development.
+    Briefly describe what a task runner is and how it’s used in frontend development.
+    Describe how to write an npm automation script.
+    Explain one of the main benefits of writing code in modules.
+    Explain “named exports” and “default exports”.
+
+
+weback tutorial. Alot of commands. easy to follow, trying to wrap my head how I will use in a real world sceniro
+
+ES6 Modules 
+import and export
+
+
+// a file called functionOne.js
+const functionOne = () => console.log('FUNCTION ONE!')
+
+export { functionOne }
+
+// another JS file
+import { functionOne } from './functionOne'
+
+functionOne() //this should work as expected!
+
+
+example
+const myName = (name) => 'Hi! My name is ' + name;
+
+export default myName
+
+//new file
+// import your function
+import myName from './myName';
+
+function component() {
+  const element = document.createElement('div');
+
+  // use your function!
+  element.innerHTML = myName('Cody');
+  return element;
+}
+
+document.body.appendChild(component());
+
+
+There are 2 different ways to use exports in your code: named exports and default exports. Which option you use depends on what you’re exporting. As a general rule if you want to export multiple functions use named exports with this pattern:
+
+const functionOne = () => 'ONE'
+const functionTwo = () => 'TWO'
+
+export {
+  functionOne,
+  functionTwo
+}
+
+import {functionOne, functionTwo} from './myModule'
+
+
+kinda excited about this, been wanting to import and export javascript classes for a while now
+
+

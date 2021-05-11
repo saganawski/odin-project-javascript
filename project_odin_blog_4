@@ -1,0 +1,6 @@
+refactored library code using classes. I could have done an extra class fro dom minuplations but got lazy.
+
+maybe even some type of a runner class
+
+pretty smiple to refactor. Problay more code this way, but it does seem more maintable and easier to test
+

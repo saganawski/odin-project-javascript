@@ -1,0 +1,132 @@
+Classes
+
+intro
+classes are like constructors but with syntactic sugar
+
+Learning Outcomes
+
+After this lesson and completing the assignments, you will be able to:
+
+    Describe the pros and cons of using classes in JavaScript.
+    Briefly discuss how JavaScript’s object creation differs from a language like Java or Ruby.
+    Explain the differences between using a class to define a constructor and other prototype methods.
+    Explain what “getters” & “setters” are.
+    Understand what computed names and class fields are.
+    Describe function binding.
+    Be able to use inheritance with classes.
+    Briefly talk about the conflict in JS with functional programming and classes.
+ 
+ Basic syntax
+ class MyClass {
+  // class methods
+  constructor() { ... }
+  method1() { ... }
+  method2() { ... }
+  method3() { ... }
+  ...
+}
+
+
+
+class User {
+
+  constructor(name) {
+    this.name = name;
+  }
+
+  sayHi() {
+    alert(this.name);
+  }
+
+}
+
+// Usage:
+let user = new User("John");
+user.sayHi();
+
+// rewriting class User in pure functions
+
+// 1. Create constructor function
+function User(name) {
+  this.name = name;
+}
+// a function prototype has "constructor" property by default,
+// so we don't need to create it
+
+// 2. Add the method to prototype
+User.prototype.sayHi = function() {
+  alert(this.name);
+};
+
+// Usage:
+let user = new User("John");
+user.sayHi();
+
+
+
+Getters/setters
+
+Just like literal objects, classes may include getters/setters, computed properties etc.
+
+Here’s an example for user.name implemented using get/set:
+
+class User {
+
+  constructor(name) {
+    // invokes the setter
+    this.name = name;
+  }
+
+  get name() {
+    return this._name;
+  }
+
+  set name(value) {
+    if (value.length < 4) {
+      alert("Name is too short.");
+      return;
+    }
+    this._name = value;
+  }
+
+}
+
+let user = new User("John");
+alert(user.name); // John
+
+user = new User(""); // Name is too short.
+
+Watch out for this
+
+class Button {
+  constructor(value) {
+    this.value = value;
+  }
+  click = () => {
+    alert(this.value);
+  }
+}
+
+let button = new Button("hello");
+
+setTimeout(button.click, 1000); // hello
+
+
+Summary
+class MyClass {
+  prop = value; // property
+
+  constructor(...) { // constructor
+    // ...
+  }
+
+  method(...) {} // method
+
+  get something(...) {} // getter method
+  set something(...) {} // setter method
+
+  [Symbol.iterator]() {} // method with computed name (symbol here)
+  // ...
+}
+
+
