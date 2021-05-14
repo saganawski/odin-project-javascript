@@ -1,0 +1,125 @@
+body{
+    background-image: url("images/pizza-background.jpg");
+    background-size: cover;
+    background-attachment: fixed;
+    display: grid;
+    grid-template-columns: repeat(12,1fr);
+    grid-template-rows: 10% 1fr 70px;
+    grid-gap: 2rem;
+
+}
+
+.header{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 30px;
+    font-style:oblique;
+    width: 100%;
+    padding: 2rem;
+    background-color: black;
+    opacity: 0.9;
+    color: white;
+    border-bottom: 1px solid black;
+    grid-column: 1/-1;
+    grid-row: 1;
+    
+}
+
+.button-nav {
+    padding: 2rem;
+    font-size: 2rem;
+    background-color: transparent;
+    border-bottom: 2px solid transparent;
+    transition: transform 0.3s;
+}
+
+.button-nav.active {
+    border-bottom: 2px solid white;
+}
+
+.button-nav:hover {
+    transform: translateY(-10%);
+}
+
+button{
+    font-family: inherit;
+    cursor: pointer;
+    border-style: none;
+    outline: none;
+}
+
+.main{
+    font-size: 2rem;
+    background-color: black;
+    opacity: 0.9;
+    color: white;
+    border: 1px solid black;
+    grid-column-start: 5;
+    grid-column-end: 9;
+    grid-row: 2;
+}
+
+.home{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    animation: fadein 1.5s;
+}
+
+.home.hide{
+    opacity: 0;
+}
+
+.home p{
+    padding: 1rem;
+}
+
+.home img {
+    width: 75%;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
+.menu{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    animation: fadein 1.5s;
+}
+.menu img{
+    width: 50%;
+    margin-top:1rem;
+    margin-bottom:1rem;
+}
+
+.contact{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    animation: fadein 1.5s;
+}
+
+.contact img{
+    width: 75%;
+    margin-top:1rem;
+    margin-bottom:1rem;
+}
+
+.footer{
+    display: flex;
+    width: 100%;
+    padding:1rem;
+    text-align: center;
+    justify-content: center;
+    background-color: black;
+    opacity: 0.9;
+    color: white;
+    border-top: 1px solid black;
+    grid-row: 3/-1;
+    grid-column: 1/-1;
+}
